@@ -99,14 +99,19 @@ def new_post():
 		db.session.commit()
 		flash('Post has been created', 'success')
 		return redirect(url_for('home'))
-	return render_template('create_post.html', title='New Post', 
-						form  = form, legend = 'New Post')
+	return render_template('create_post.html', title='Добавить микросервис', 
+						form  = form, legend = 'Добавить микросервис')
 
 
 @app.route("/post/<int:post_id>")
 def post(post_id):
 	post = Post.query.get_or_404(post_id)
 	return render_template('post.html', title=post.title, post=post)
+
+
+@app.route("/post1")
+def post1():
+	return render_template('post.html')
 
 @app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required

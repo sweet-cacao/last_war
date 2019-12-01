@@ -1,39 +1,151 @@
 {% extends "layout.html" %}
 {% block content %}
-		<article class="media content-section">
-		  <img class="rounded-circle article-img" src = "{{ url_for('static', filename='profile_pic/' + post.author.image_file)}}">
-		  <div class="media-body">
-		    <div class="article-metadata">
-		      <a class="mr-2" href="#">{{ post.author.username }}</a>
-              <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-              {% if post.author == current_user%}
-               <div>
-                   <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('update_post', post_id =post.id)}}">Update</a>
-                   <button type="button" class = "btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
-               </div>
-              {% endif %}
-		    </div>
-		    <h2 class="article-title">{{ post.title }}</h2>
-		    <p class="article-content">{{ post.content }}</p>
-		  </div>
-		</article>
-		<!-- Modal -->
-		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-				<h5 class="modal-title" id="deleteModalLabel">Delete post?</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				</div>
-				<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<form action="{{ url_for('delete_post', post_id=post.id)}}" method="POST">
-					<input class="btn btn-danger"  type="submit" value="delete">
-				</form>
-				</div>
-			</div>
-			</div>
+<style>
+.wrapper{
+	padding: 70px;
+}
+.leftBar{
+	background: #f4f4f4;
+	width: 30%;
+	text-align: center;
+	padding: 30px;
+}
+.bar{
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 620px;
+	padding-left: 50px;
+	margin-top: 40px;
+}
+
+.bar span{
+	position: relative;
+	display: block;
+	height: 500px;
+	width: 50px;
+	background: linear-gradient(0deg,red, green);
+	float: left;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	position: absolute;
+	justify-content: space-around;
+}
+.bar span:after{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25%;
+	width: 100%;
+	background: #f4f4f4;
+}
+.bar p{
+	position: relative;
+	left: 100px;
+	top: -1px;
+	font-size: 25px;
+}
+.bar p:after{
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: -100px;
+	height: 2px;
+	width: 100px;
+	background: #000;
+}
+.rightBar{
+	margin-left: 100px;
+	background: #f4f4f4;
+	width: calc(70% - 200px);
+	padding: 50px;
+	position: relative;
+	overflow: hidden;
+}
+.rightBar div{
+	font-size: 25px;
+}
+.rightBar a{
+	color:#19d491;
+	text-decoration: underline;
+	margin: 0px 10px;
+}
+.rightBar ul{
+	position: absolute;
+	top: 250px;
+	left: 100px;
+	height: 700px;
+	width: 700px;
+	overflow: hidden;
+}
+.rightBar p{
+	font-weight: 900;
+	font-size: 25px;
+	margin-top: 40px;
+}
+.rightBar span,
+.rightBar li{
+	font-size: 18px;
+	height: 200px;
+	list-style: none;
+	width: 200px;
+	color: #19d491;
+	border: 2px solid #19d491;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.rightBar span{
+	background: #19d491;
+	color: #fff;
+}
+.rightBar li:nth-child(3){
+	transform: translate(-160%, -50%);
+}
+.rightBar li:nth-child(4){
+	transform: translate(60%, -50%);
+}
+.rightBar li:nth-child(5){
+	transform: translate(-50%, 60%);
+}
+.rightBar li:nth-child(6){
+	transform: translate(-50%, -160%);
+}
+
+
+</style>
+<div class="wrapper">
+	<div class="leftBar">
+		<img src="../static/profile_pic/w264h2641393885391130.png" alt="">
+		<h4>Стадии разработки</h4>
+		<div class="bar">
+			<span></span>
+			<p>Заморозка</p>
+			<p>Тестирование</p>
+			<p>Разработка</p>
+			<p>Дизайн</p>
+			<p>Планирование</p>
 		</div>
+	</div>
+	<div class="rightBar">
+		<h4>Название проекта</h4>
+		<div> <p>Разработчики</p> <a href="#">Элтац Ишак,</a><a href="#">Элтац Айнура,</a> <a href="#">Элтац Мал</a> </div>
+		<ul>
+			<span>Название проекта</span>
+			<p>Категории</p>
+			<li><a href="#">Транспорт</a> </li>
+			<li><a href="#">Психушка</a></li>
+			<li><a href="#">Больница</a></li>
+			<li><a href="#">ГосДума</a></li>
+		</ul>
+	</div>
+</div>
+		
 {% endblock content%}
