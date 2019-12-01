@@ -1,0 +1,197 @@
+{% extends "layout.html" %}
+{% block content %}	 
+<style>
+	.content-section{
+		min-width: 80%;
+		border: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin-top: 100px;
+	}
+	.media img{
+		height: 300px;
+	}
+	.media-body{
+	}
+	h4{
+		margin: 20px 0px;
+		width: 100%;
+	}
+	.account-headin{
+		font-size: 30px;
+	}
+	.text-secondary{
+		margin-top: 15px;
+		font-size: 33px;
+	}
+	.form{
+		margin-left: 200px;
+	}
+	.form-control{
+		height: 80px;
+		width: 100%;
+		background: 0;
+		border: 0;
+		border-radius: 0px;
+		border-bottom: 2px solid #000;
+		font-size: 40px;
+	}
+	.img_block{
+		padding: 5px 10px 5px 30px;
+		font-size: 20px;
+		border: 1px solid #8d8d8d;
+		display: inline-block;
+		cursor: pointer;
+		margin: 20px 0px;
+		background: url(../static/profile_pic/1564526-64.png);
+		background-repeat: no-repeat;
+		background-size:25px;
+		background-position: 3px 5px;
+		cursor: pointer;
+	}
+	.form-control-file{
+		display: none;
+	}
+	.project{
+		border: 1px solid #8d8d8d;
+		padding: 30px;
+		margin: 10px;
+		border-radius: 10px;
+		width: calc(50% - 20px);
+	}
+	.project h3{
+		font-size: 30px;
+	}
+	.project p{
+		font-size: 20px;
+		margin: 15px 0px;
+	}
+	.project h5{
+		width: 50%;
+		font-size: 18x;
+		float: left;
+	}
+	.project a{
+		padding: 5px 10px;
+		border: 1px solid #19d491;
+		font-size: 20px;
+		color: #19d491;
+	}
+
+	.add_project_btn{
+		padding: 20px 40px;
+		border: 2px solid #fff;
+		outline: 0;
+		font-size: 20px;
+		font-weight: 900;
+		background: #19d491;
+		color: #fff;
+		border-radius: 5px;
+		letter-spacing: 2px;
+		cursor: pointer;
+		transition: ease 0.3s;
+		position: relative;
+	}
+</style>
+	<div class="content-section">
+			<h4 >Мои данные</h4>
+		<div class="media">
+		  <img class="rounded-circle account-img" src="{{ image_file }}">
+		  <div class="media-body">
+				
+			<h2 class="account-heading">{{ current_user.username }}</h2>
+			<p class="text-secondary">{{ current_user.email }}</p>
+		  </div>
+		</div>
+				<form method="POST" action="" enctype="multipart/form-data" class="form">
+					{{ form.hidden_tag() }}
+					<fieldset class="form-group">
+						<div class="form-group">
+							{{ form.username.label(class="form-control-label")}}
+		
+							{%if form.username.errors%}
+								{{ form.username(class="form-control form-control-lg is-invalid")}}
+								<div class="invalid-feedback">
+									{% for error in form.username.errors%}
+										<span>{{error}}
+										</span>
+									{%endfor%}
+								</div>
+							{%else%}
+								{{ form.username(class="form-control form-control-lg")}}
+							{%endif%}
+						</div>
+						<div class="form-group">
+							{{ form.email.label(class="form-control-label")}}
+							{%if form.email.errors%}
+								{{ form.email(class="form-control form-control-lg is-invalid")}}
+								<div class="invalid-feedback">
+									{% for error in form.email.errors%}
+										<span>{{error}}
+										</span>
+									{%endfor%}
+								</div>
+							{%else%}
+								{{ form.email(class="form-control form-control-lg")}}
+							{%endif%}
+					
+						</div>
+						<div class="form-group img_block">
+							{{ form.picture.label() }}
+							{{ form.picture(class="form-control-file")}}
+							{% if form.picture.errors%}
+								{% for error in form.picture.errors%}
+									<span class= "text-danger">{{error}}</span></br>
+								{%endfor%}
+							{%endif%}
+						</div>
+					</fieldset>
+					<div class="form-group">
+						{{ form.submit(class="btn btn-outline-info")}}
+					</div>
+				</form>
+			
+	</div>
+	<div class="content-section">
+		<h4>Мои проекты</h4>
+		<div class="project">
+			<h3>Название проекта</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto sapiente sit voluptatum doloribus omnis ullam velit cum maxime tempore! Aut ut accusamus ducimus adipisci voluptates ad qui vero quam.</p>
+			<h5>Роль: <span class="role_value">Архитектор</span></h5>
+			<a href="#">Посмотреть проект</a>
+		</div>
+		<div class="project">
+			<h3>Название проекта</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto sapiente sit voluptatum doloribus omnis ullam velit cum maxime tempore! Aut ut accusamus ducimus adipisci voluptates ad qui vero quam.</p>
+			<h5>Роль: <span class="role_value">Архитектор</span></h5>
+			<a href="#">Посмотреть проект</a>
+		</div>
+		<div class="project">
+			<h3>Название проекта</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto sapiente sit voluptatum doloribus omnis ullam velit cum maxime tempore! Aut ut accusamus ducimus adipisci voluptates ad qui vero quam.</p>
+			<h5>Роль: <span class="role_value">Архитектор</span></h5>
+			<a href="#">Посмотреть проект</a>
+		</div>
+		<div class="project">
+			<h3>Название проекта</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto sapiente sit voluptatum doloribus omnis ullam velit cum maxime tempore! Aut ut accusamus ducimus adipisci voluptates ad qui vero quam.</p>
+			<h5>Роль: <span class="role_value">Архитектор</span></h5>
+			<a href="#">Посмотреть проект</a>
+		</div>
+		<div class="project">
+			<h3>Название проекта</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto sapiente sit voluptatum doloribus omnis ullam velit cum maxime tempore! Aut ut accusamus ducimus adipisci voluptates ad qui vero quam.</p>
+			<h5>Роль: <span class="role_value">Архитектор</span></h5>
+			<a href="#">Посмотреть проект</a>
+		</div>
+		<div class="project">
+			<h3>Название проекта</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto sapiente sit voluptatum doloribus omnis ullam velit cum maxime tempore! Aut ut accusamus ducimus adipisci voluptates ad qui vero quam.</p>
+			<h5>Роль: <span class="role_value">Архитектор</span></h5>
+			<a href="#">Посмотреть проект</a>
+		</div>
+		<a class="add_project_btn" href="{{ url_for('new_post')}}">Добавить проект</a>
+	</div>
+{% endblock content %}

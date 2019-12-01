@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+		.img_bg{
+		  width: 50%;
+		  height: 100%;
+		  float: left;
+		  position: relative;
+		}
+		.img_bg img{
+		  position: absolute;
+		  bottom: 0;
+		  left: 0;
+		  width: 100%;
+		  max-width: 100%;
+		  opacity: 0;
+		  transform: translateX(-100px);
+		  pointer-events: none;;
+		}
+		
+		
+		.wrapper_show .img_bg img{
+		  transition: transform 1s, opacity 1s;
+		  transition-delay: 1s;
+		  transform: translateX(0);
+		  opacity: 0.8;
+		}
+		nav{
+			display: none;
+		}
+		</style>
+	<div class="wrapper">
+			<div class="img_bg">
+					<img src="../static/profile_pic/image.png" alt="">
+					<div class="text">
+						<p>Удобство организации</p>
+						<p>Поиск микросервисов</p>
+						<p>Управление жизненным циклом</p>
+						<p>Визуализация связей сервисов</p>
+					</div>
+				</div>
+				<div class="content">
+						<form method="POST" action="" class="form_block">
+								{{ form.hidden_tag() }}
+								<fieldset class="form-group">
+									<h4>Регистрация</h4>
+									<div class="form">
+										{{ form.username.label(class="form-control-label")}}
+					
+										{%if form.username.errors%}
+											{{ form.username(class="form-control form-control-lg is-invalid")}}
+											<div class="invalid-feedback">
+												{% for error in form.username.errors%}
+													<span>{{error}}
+													</span>
+												{%endfor%}
+											</div>
+										{%else%}
+											{{ form.username(class="form-control form-control-lg")}}
+										{%endif%}
+									</div>
+									<div class="form-group">
+										{{ form.email.label(class="form-control-label")}}
+										{%if form.email.errors%}
+											{{ form.email(class="form-control form-control-lg is-invalid")}}
+											<div class="invalid-feedback">
+												{% for error in form.email.errors%}
+													<span>{{error}}
+													</span>
+												{%endfor%}
+											</div>
+										{%else%}
+											{{ form.email(class="form-control form-control-lg")}}
+										{%endif%}
+									</div>
+									<div class="form-group">
+										{{ form.password.label(class="form-control-label")}}
+										{%if form.password.errors%}
+											{{ form.password(class="form-control form-control-lg is-invalid")}}
+											<div class="invalid-feedback">
+												{% for error in form.password.errors%}
+													<span>{{error}}
+													</span>
+												{%endfor%}
+											</div>
+										{%else%}
+											{{ form.password(class="form-control form-control-lg")}}
+										{%endif%}
+									</div>
+									<div class="form-group">
+										{{ form.confirm_password.label(class="form-control-label")}}
+										{%if form.confirm_password.errors%}
+											{{ form.confirm_password(class="form-control form-control-lg is-invalid")}}
+											<div class="invalid-feedback">
+												{% for error in form.confirm_password.errors%}
+													<span>{{error}}
+													</span>
+												{%endfor%}
+											</div>
+										{%else%}
+											{{ form.confirm_password(class="form-control form-control-lg")}}
+										{%endif%}
+									</div>
+								</fieldset>
+								<div class="form-group">
+									{{ form.submit(class="btn btn-outline-info")}}
+								</div>
+								<div class="reg">
+										<small>
+											У вас уже есть аккаунт?<a class="reg_btn" href="{{ url_for('login') }}">Войти</a>
+										</small>
+										
+									</div>
+							</form>
+				</div>
+		
+		<script>
+				window.onload = function(){
+					document.querySelector('.wrapper').classList.add('wrapper_show')
+				}
+			</script>
+{% endblock content %}
