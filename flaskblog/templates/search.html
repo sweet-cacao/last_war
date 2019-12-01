@@ -3,19 +3,88 @@
 <style>
 	.wrapper{
 		border: none;
-		width: 90vw;
+		flex-direction: column;
+		padding-top: 50px;
+		padding: 50px 10%;
 	}
 	#search_input{
 		height: 70px;
-		width: 100%;
+		width: 80%;
 		font-size: 30px;
 		padding-left: 30px;
 		margin-top: 40px;
+	}
+	.project{
+		width: 80%;
+		margin-top: 100px;
+	}
+
+	.project a{
+		display: block;
+		border: 1px solid #000;
+		padding: 30px;
+		margin: 30px 30px;
+		width: calc(50% - 60px);
+		float: left;
+	}
+	.project a:hover{
+		background: #000;
+		color: #fff;
+	}
+	.project a p{
+		font-size: 20px;
+		margin: 20px 0px;
+	}
+	.project ul li{
+		display: inline;
+		margin-right: 30px;
 	}
 </style>
 	<div class="wrapper">
 			<h4>Поиск</h4>
 			<input type="search" id="search_input" autofocus>
+			<div class="project">
+				<a href="">
+					<h3>Название проекта</h3>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus delectus, iste, optio quos cum minima ipsa quis provident aspernatur impedit qui nostrum quibusdam labore doloribus laudantium accusantium quia. Quisquam, necessitatibus.</p>
+					<ul>
+						<li>asdasdasd</li>
+						<li>asdasd</li>
+						<li>asdasd</li>
+						<li>asdasd</li>
+					</ul>
+				</a>
+				<a href="">
+						<h3>Название проекта</h3>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus delectus, iste, optio quos cum minima ipsa quis provident aspernatur impedit qui nostrum quibusdam labore doloribus laudantium accusantium quia. Quisquam, necessitatibus.</p>
+						<ul>
+							<li>asdasdasd</li>
+							<li>asdasd</li>
+							<li>asdasd</li>
+							<li>asdasd</li>
+						</ul>
+					</a>
+					<a href="">
+							<h3>Название проекта</h3>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus delectus, iste, optio quos cum minima ipsa quis provident aspernatur impedit qui nostrum quibusdam labore doloribus laudantium accusantium quia. Quisquam, necessitatibus.</p>
+							<ul>
+								<li>asdasdasd</li>
+								<li>asdasd</li>
+								<li>asdasd</li>
+								<li>asdasd</li>
+							</ul>
+						</a>
+						<a href="">
+								<h3>Название проекта</h3>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus delectus, iste, optio quos cum minima ipsa quis provident aspernatur impedit qui nostrum quibusdam labore doloribus laudantium accusantium quia. Quisquam, necessitatibus.</p>
+								<ul>
+									<li>asdasdasd</li>
+									<li>asdasd</li>
+									<li>asdasd</li>
+									<li>asdasd</li>
+								</ul>
+							</a>
+			</div>
 	</div>
 {% endblock content %}
 	
