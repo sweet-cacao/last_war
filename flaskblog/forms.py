@@ -49,10 +49,10 @@ class UpdateAccountForm(FlaskForm):
 
 class PostForm(FlaskForm):
 	title = StringField('Название', validators=[DataRequired()])
-	content = TextAreaField('Описание', validators=[DataRequired()])
-	kategories = StringField('Категории', validators=[DataRequired()])
-	stek = StringField('Стэк технологий', validators=[DataRequired()])
-	connected_apps = StringField('Взаимосвязанные микросервисы', validators=[DataRequired()])
-	contributers = StringField('Разработчики', validators=[DataRequired()])
-	stage = StringField('Стадия', validators=[DataRequired()])
+	content = StringField('Описание', validators=[DataRequired()])
+	kategories = StringField('Категории')
+	stek = StringField('Стэк технологий')
+	connected_apps = StringField('Взаимосвязанные микросервисы')
+	contributers = StringField('Разработчики')
+	stage = StringField('Стадия')
 	submit = SubmitField('Post')

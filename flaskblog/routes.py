@@ -9,6 +9,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 
 
+
 @app.route('/')
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -113,7 +114,7 @@ def account():
 def new_post():
 	form = PostForm()
 	if form.validate_on_submit():
-		post = Post(title=form.title.data, content=form.content.data, author=current_user)
+		post = Post(title=str(form.title.data), content=str(form.content.data), user_id = current_user.username)
 		db.session.add(post)
 		db.session.commit()
 		flash('Post has been created', 'success')
