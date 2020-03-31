@@ -29,9 +29,28 @@ def home():
  posts = Post.query.all()
  return render_template('home.html', posts = posts)
 
-@app.route('/search')
+@app.route('/search', methods=['GET', 'POST'])
 def search():
-    return render_template('search.html', title='Поиск')
+	import time
+	from flaskblog.sear import compare as srv
+	from flaskblog.forms import Search
+	form = Search()
+	res = []
+	name_1 = 'Ничего не найдено'
+	# name_2 = 'Default'
+	content_1 = ""
+	# content_1 = "Lorem ipsum dolor ipisicing elit. Temporibus delectus, iste, optio quos cum minima ipsa quis provident aspernatur impedit qui nostrum quibusdam labore doloribus laudantium accusantium quia. Quisquam, necessitatibus.</p>"
+	count = User.query.count()
+	if form.submit:
+		for te in Post.query.order_by(Post.title):
+			if srv(str(te.title), str(form.info.data)):
+				name_1 = te.title
+				content_1 = te.content
+			elif srv(str(te.content), str(form.info.data)):
+				name_1 = te.title
+				content_1 = te.content
+		form.info.data = ""
+	return render_template('search.html', title='Поиск', form=form, name_1=name_1, content_1=content_1)
 
 @app.route('/add_project')
 def add_project():

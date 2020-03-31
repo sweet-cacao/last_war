@@ -31,6 +31,10 @@ class LoginForm(FlaskForm):
 	remember = BooleanField('Запомнить меня')
 	submit = SubmitField('Войти')
 
+class Search(FlaskForm):
+	info = StringField('', render_kw={"placeholder": "Что собираетесь искать?"}, validators=[DataRequired()])
+	submit = SubmitField('')
+
 class UpdateAccountForm(FlaskForm):
 	username = StringField('ФИО', validators=[DataRequired(), Length(min=2, max=20)])
 	email = StringField('Email', validators=[DataRequired(), Email()])
